@@ -2,12 +2,13 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @State var perks = [
+    let perks = [
         "Distribution",
         "Storage",
         "Food Spoilage",
         "Retail & Restaurant Waste",
     ]
+    let url = "https://en.wikipedia.org/wiki/Fractal"
     
     var body: some View {
         NavigationStack {
@@ -45,8 +46,12 @@ struct ContentView: View {
                             HStack {
                                 Image(systemName: "globe.americas.fill")
                                     .foregroundStyle(.blue)
-                                Text("World Hunger")
-                                    .font(.title3.bold())
+                                    .symbolRenderingMode(.hierarchical)
+                                Link(destination: URL(string: url)!) {
+                                    Text("World Hunger")
+                                        .font(.title3.bold())
+                                }
+                                .underline()
                             }
                             Text("Around 1/3 of all the food produced in the world is not eaten.")
                                 .foregroundStyle(.secondary)
@@ -74,7 +79,7 @@ struct ContentView: View {
                             
                             Divider()
                             
-                            HStack(spacing: 15) {
+                            HStack(alignment: .center, spacing: 15) {
                                 Image(systemName: "fork.knife")
                                     .font(.title3)
                                     .foregroundStyle(.white)

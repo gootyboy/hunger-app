@@ -3,7 +3,6 @@ import Observation
 
 @Observable
 final class LocationManager: NSObject, CLLocationManagerDelegate {
-    
     private let manager = CLLocationManager()
     private let geocoder = CLGeocoder()
     
