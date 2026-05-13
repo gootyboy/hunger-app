@@ -2,20 +2,20 @@ import SwiftUI
 import SwiftData
 
 struct AddStoreView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Environment(\.dismiss) private var dismiss
-    
-    @State private var locationManager = LocationManager()
-    
-    @State private var storeName = ""
-    @State private var address = ""
-    @State private var city = ""
-    @State private var state = ""
-    @State private var zipCode = ""
-    @State private var country = ""
+    @Environment(\.modelContext) var modelContext
+    @Environment(\.dismiss) var dismiss
+
+    @State var locationManager = LocationManager()
+
+    @State var storeName = ""
+    @State var address = ""
+    @State var city = ""
+    @State var state = ""
+    @State var zipCode = ""
+    @State var country = ""
     
     @State var selectedItems: Set<String> = []
-    @State private var itemQuantities: [String: Int] = [:]
+    @State var itemQuantities: [String: Int] = [:]
 
     let columns = [GridItem(.adaptive(minimum: 75))]
     
@@ -239,7 +239,8 @@ struct AddStoreView: View {
             state: state,
             zipCode: zipCode,
             country: country,
-            items: Array(selectedItems)
+            items: Array(selectedItems),
+            quantities: itemQuantities
         )
         modelContext.insert(newStore)
 

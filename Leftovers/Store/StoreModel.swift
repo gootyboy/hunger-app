@@ -10,9 +10,10 @@ class Store {
     var zipCode: String
     var country: String
     var items: [String]
+    var quantities: [String: Int]
     var id = UUID()
 
-    init(name: String, address: String, city: String, state: String, zipCode: String, country: String, items: [String]) {
+    init(name: String, address: String, city: String, state: String, zipCode: String, country: String, items: [String], quantities: [String: Int]) {
         self.name = name
         self.address = address
         self.city = city
@@ -20,5 +21,6 @@ class Store {
         self.zipCode = zipCode
         self.country = country
         self.items = items
+        self.quantities = quantities
     }
 }

@@ -91,16 +91,16 @@ struct StoreMapView: View {
         }
     }
     
-    private func geocodeStores() async {
+    func geocodeStores() async {
         let geocoder = CLGeocoder()
         var tempMarkers: [StoreMarker] = []
-        
+
         for store in stores {
             let fullAddress = "\(store.address), \(store.city), \(store.state) \(store.zipCode), \(store.country)"
             
             do {
                 let placemarks = try await geocoder.geocodeAddressString(fullAddress)
-                
+
                 if let coordinate = placemarks.first?.location?.coordinate {
                     let marker = StoreMarker(store: store, coordinate: coordinate)
                     tempMarkers.append(marker)
